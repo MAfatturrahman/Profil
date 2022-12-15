@@ -38,7 +38,7 @@ Route::group(['middleware' => ['auth']], function () {
     // ---------------------------------------------------------------------------------------------------------------------------------------
     Route::get('/role', [roleController::class, 'index'])->name('role.index')->middleware('can:view-role');
     Route::get('/role/create', [roleController::class, 'create'])->name('role.create')->middleware('can:create-role');
-    Route::get('/role/{id}/edit', [roleController::class, 'edit'])->name('role-edit')->middleware('can:edit-role');
+    Route::get('/role/{id}/edit', [roleController::class, 'edit'])->name('role.edit')->middleware('can:edit-role');
     Route::get('/role/{id}', [roleController::class, 'show'])->name('role.show')->middleware('can:show-role');
     Route::delete('/role/{id}', [roleController::class, 'destroy'])->name('role.destroy')->middleware('can:delete-role');
     Route::post('/role', [roleController::class, 'store'])->name('role.store')->middleware('can:create-role');

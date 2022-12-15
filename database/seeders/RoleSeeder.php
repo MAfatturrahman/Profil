@@ -15,17 +15,17 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $superAdmin = Role::create([
-            'name' => 'SuperAdmin',
-            'guard_name' => 'web'
-        ]);
-
         $Admin = Role::create([
             'name' => 'Admin',
             'guard_name' => 'web'
         ]);
 
-        $superAdmin->givePermissionTo([
+        $User = Role::create([
+            'name' => 'User',
+            'guard_name' => 'web'
+        ]);
+
+        $Admin->givePermissionTo([
             'view-userManagement',
             'create-userManagement',
             'edit-userManagement',
@@ -37,8 +37,8 @@ class RoleSeeder extends Seeder
             'delete-role',
         ]);
 
-        $Admin->givePermissionTo([
-            'view-userManagement',
+        $User->givePermissionTo([
+
         ]);
     }
 }

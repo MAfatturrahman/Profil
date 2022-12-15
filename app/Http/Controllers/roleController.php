@@ -7,18 +7,19 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class roleController extends Controller
 {
     // Untuk memanggil halaman index role (Backend)
     public function index()
     {
-        $role = Role::all();
+        $id = Auth::id();
+        $roles = Role::all();
         return view(
             'backend.role.index',
             compact(
-                'roles'
+                'roles',
             )
         );
     }
@@ -72,7 +73,7 @@ class roleController extends Controller
         foreach ($getAllPermissions as $permission) {
             $permissions[] = $permission->name;
         }
-        return view('admin.role.edit')->with([
+        return view('backend.role.edit')->with([
             'role' => $role,
             'permissions' => $permissions,
         ]);
